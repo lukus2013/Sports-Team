@@ -1,0 +1,14 @@
+{
+    "spot1": {
+        "name": "Roster Spot1",
+        "date": "2021/10/19",
+        "postion": "spot1",
+        "uid": "123456"
+    },
+    "spot2": {
+        "name": "Roster Spot2",
+        "date": "2021/10/19",
+        "postion": "spot2",
+        "uid": "123456"
+    }
+}
