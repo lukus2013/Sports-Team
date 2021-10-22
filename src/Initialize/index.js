@@ -4,8 +4,10 @@ import 'firebase/auth';
 import { Container } from 'reactstrap';
 import Navigation from '../components/Navigation';
 import SignIn from '../views/SignIn';
+import Routes from '../routes';
 
 function Initialize() {
+  const [player, setPlayer] = useState([]);
   const [user, setUser] = useState([]);
 
   useEffect(() => {
@@ -29,12 +31,8 @@ function Initialize() {
       {user ? (
         <>
           <Navigation />
-          <h2>Create Your Fantasy Team</h2>
-          <h3>Think deeply and create the team of your dreams.</h3>
-          <h3>
-            Your roster could be real or fake, just make one that will win the
-            championship.
-          </h3>
+          <h1>Welcome!</h1>
+          <Routes player={player} setPlayer={setPlayer} />
         </>
       ) : (
         <SignIn user={user} />
