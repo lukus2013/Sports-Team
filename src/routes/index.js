@@ -5,7 +5,7 @@ import Home from '../views/Home';
 import New from '../views/New';
 import Team from '../views/Team';
 
-export default function Routes({ player, setPlayer }) {
+export default function Routes({ player, setPlayer, setEditPlayer }) {
   return (
     <div>
       <Switch>
@@ -17,12 +17,24 @@ export default function Routes({ player, setPlayer }) {
         <Route
           exact
           path="/new"
-          component={() => <New player={player} setPlayer={setPlayer} />}
+          component={() => (
+            <New
+              player={player}
+              setPlayer={setPlayer}
+              setEditPlayer={setEditPlayer}
+            />
+          )}
         />
         <Route
           exact
           path="/team"
-          component={() => <Team player={player} setPlayer={setPlayer} />}
+          component={() => (
+            <Team
+              player={player}
+              setPlayer={setPlayer}
+              setEditPlayer={setEditPlayer}
+            />
+          )}
         />
       </Switch>
     </div>
@@ -32,4 +44,5 @@ export default function Routes({ player, setPlayer }) {
 Routes.propTypes = {
   player: PropTypes.arrayOf(PropTypes.object).isRequired,
   setPlayer: PropTypes.func.isRequired,
+  setEditPlayer: PropTypes.func.isRequired,
 };

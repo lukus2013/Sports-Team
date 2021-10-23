@@ -5,10 +5,12 @@ import { Container } from 'reactstrap';
 import Navigation from '../components/Navigation';
 import SignIn from '../views/SignIn';
 import Routes from '../routes';
+import { getRoster } from '../api/data/rosterData';
 
 function Initialize() {
-  const [player, setPlayer] = useState([]);
   const [user, setUser] = useState([]);
+  const [player, setPlayer] = useState([]);
+  const [editPlayer, setEditPlayer] = useState([]);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -20,6 +22,7 @@ function Initialize() {
           user: authed.email.split('@')[0],
         };
         setUser(userInfo);
+        getRoster(userInfo).then(setPlayer);
       } else if (user || user === null) {
         setUser(false);
       }
@@ -32,7 +35,12 @@ function Initialize() {
         <>
           <Navigation />
           <h1>Welcome!</h1>
-          <Routes player={player} setPlayer={setPlayer} />
+          <Routes
+            player={player}
+            setPlayer={setPlayer}
+            editPlayer={editPlayer}
+            setEditPlayer={setEditPlayer}
+          />
         </>
       ) : (
         <SignIn user={user} />

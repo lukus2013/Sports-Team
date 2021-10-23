@@ -44,6 +44,7 @@ export default function RosterForm({ player, setPlayer, setEditPlayer }) {
     } else {
       createPlayer({ ...formInput }).then((players) => {
         setPlayer(players);
+        console.warn(setPlayer);
         clearForm();
       });
     }
